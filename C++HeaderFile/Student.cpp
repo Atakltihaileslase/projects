@@ -4,14 +4,14 @@ using namespace std;
 
 // constructor
 
-void Student::Student(string studentId) {
-    setId(studentId);
+void Student::Student(string stuId) {
+    setId(stuId);
 }
 
 // setters
 
-void Student::setId(string studentId) {
-    id = studentId;
+void Student::setId(string stuId) {
+    id = stuId;
 }
 
 void Student::setFirstName(string fname) {
