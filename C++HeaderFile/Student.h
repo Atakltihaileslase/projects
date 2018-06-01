@@ -10,16 +10,14 @@ class Student {
     // setters
     void setId(string);
     void setDepartment(string);
-    void setClassYear(string);
-    void setFirstName(string);
-    void setLastName(string);
+    void setName(string);
+    
 
     // getters
     string getId();
     string getDepartment();
-    string getClassYear();
-    string getFirstName();
-    string getLastName();
+    string getName();
+    
 
     // utility 
     void displayStudentInfo();
