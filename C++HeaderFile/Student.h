@@ -6,20 +6,18 @@ class Student {
 
     // constructor
     Student(string); 
-
-    // setters
+    
+    // setters function
     void setId(string);
     void setDepartment(string);
     void setName(string);
     
-
-    // getters
+    // getters function
     string getId();
     string getDepartment();
     string getName();
     
-
-    // utility 
+    //a utility function
     void displayStudentInfo();
 
 };
