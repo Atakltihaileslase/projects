@@ -26,7 +26,7 @@ int main() {
     // attached shared memory to the process's address space
    chars = shmat(shm_id, NULL, 0);
 
-    if(head == (char*)-1) {
+    if(chars == (char*)-1) {
         perror("ERROR: shmat has failed \n");
         exit(0);
     }
@@ -58,7 +58,7 @@ int main() {
 	}
 
     //  detach the shared memory
-    if(shmdt(head) == -1) {
+    if(shmdt(chars) == -1) {
         perror("ERROR: detaching shared memory failed");
     }
 
