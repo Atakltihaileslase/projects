@@ -9,14 +9,14 @@
 int main() {
 
     int shm_id;
-    size_t size = 200;
-    int shmflg =  IPC_CREAT | 0666; // read write permission for all users
+    size_t size = 300;
+    int shm_flg =  IPC_CREAT | 0666; // read write permission for all users
 
     key_t key = 12345;
     
-    char *message, *head;
+    char *msg, *chars;
 
-    shm_id = shmget(key, size, shmflg);
+    shm_id = shmget(key, size, shm_flg);
 
     if(shm_id == -1) {
         perror("Error: shmget has failed\n");
@@ -24,7 +24,7 @@ int main() {
     }
 
     // attached shared memory to the process's address space
-    head = shmat(shm_id, NULL, 0);
+   chars = shmat(shm_id, NULL, 0);
 
     if(head == (char*)-1) {
         perror("ERROR: shmat has failed \n");
@@ -33,38 +33,36 @@ int main() {
 
 
 	// reserve the first char for flagging purpose
-	message = head + 1;
+	msg = chars + 1;
 
 	while (TRUE) {
 
 		// set flag in unread state
-		head[0] = 'n';
+		chars[0] = 'n';
 
 		// print the prompt 
-		printf("You >>> ");
+		printf("I am >>> ");
 
 		// get input message
-		fgets(message, size - 2, stdin);
+		fgets(msg, size - 2, stdin);
 
 		// set flag in read state
-		head[0] = 'y';
+		chars[0] = 'y';
 
 		// wait for a reply
-		while(head[0] != 'f') {
+		while(chars[0] != 'f') {
 		    sleep(1);
 		}
-
-		// print the friend's reply
-		printf("Friend >>> %s", message);
+		printf("the shared friend >>> %s", msg);
 
 	}
 
-    // and detach the shared memory
+    //  detach the shared memory
     if(shmdt(head) == -1) {
         perror("ERROR: detaching shared memory failed");
     }
 
-    // finally free the shared memory
+    //  free the shared memory
     shmctl(shm_id, IPC_RMID, NULL);
 
     return 0;
