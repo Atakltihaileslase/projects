@@ -14,21 +14,15 @@ void Student::setId(string stuId) {
     id = stuId;
 }
 
-void Student::setFirstName(string fname) {
-    firstName = fname;
-}
-
-void Student::setLastName(string lname) {
-    lastName = lname;
+void Student::setName(string fullname) {
+            name = fullname;
 }
 
 void Student::setDepartment(string dep) {
     department = dep;
 }
 
-void Student::setClassYear(string year) {
-    classYear = year;
-}
+
 
 // getters
 
@@ -36,28 +30,19 @@ string Student::getId() {
     return id;
 }
 
-string Student::getFirstName() {
-    return firstName;
+string Student::getName() {
+    return name;
 }
-
-string Student::getLastName() {
-    return lastName;
-}
-
 string Student::getDepartment() {
     return department;
 }
 
-string Student::getClassYear() {
-    return classYear;
-}
 
 // utility function
 
 void Student::displayStudentInfo() {
     cout<<"Student Id: "<<getId()<<endl;
-    cout<<"Full name: "<<getFirstName()<<" "<<getLastName()<<endl;
+    cout<<"Full name: "<<getName()<<endl;
     cout<<"Department: "<<getDepartment()<<endl;
-    cout<<"Class Year: "<<getClassYear()<<endl;
 }
 
